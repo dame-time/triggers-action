@@ -1,5 +1,17 @@
 name: Events Demo 1
-on: ...
+on:
+  pull_request:
+    types:
+      - opened
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - 'dev-*'
+      - 'feature/**'
+    paths-ignore:
+      - 'docs/**'
+      - '.github/workflows/**' # Ignore changes to workflows so it does not rerun if I push only from there
 jobs:
   deploy:
     runs-on: ubuntu-latest
